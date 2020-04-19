@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.nhisyamj.sample</groupId>
+    <artifactId>sb-samples</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0.0</version>
+
+    <properties>
+        <java.version>11</java.version>
+        <lombok.version>1.18.10</lombok.version>
+        <springfox.swagger.version>2.9.2</springfox.swagger.version>
+        <mysql.connector.version>8.0.19</mysql.connector.version>
+        <jacoco.version>0.8.5</jacoco.version>
+        <sonar.version>3.7.0.1746</sonar.version>
+        <log4j.slf4j.impl.version>2.11.0</log4j.slf4j.impl.version>
+    </properties>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.2.2.RELEASE</version>
+    </parent>
+
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <activatedProperties>dev</activatedProperties>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+                <property>
+                    <name>dev</name>
+                </property>
+            </activation>
+        </profile>
+    </profiles>
+
+    <modules>
+        <module>app-mongo</module>
+        <module>module-mongo</module>
+        <module>module-common</module>
+        <module>app-lombok-log4j2</module>
+        <module>module-lombok-log4j2</module>
+        <module>app-log4j2</module>
+        <module>module-log4j2</module>
+    </modules>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-install-plugin</artifactId>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <configuration>
+                        <source>${java.version}</source>
+                        <target>${java.version}</target>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>test-jar</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+</project>
