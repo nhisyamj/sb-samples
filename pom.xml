@@ -48,6 +48,8 @@
         <module>module-lombok-log4j2</module>
         <module>app-log4j2</module>
         <module>module-log4j2</module>
+        <module>app-wso2</module>
+        <module>module-wso2</module>
     </modules>
 
     <build>
